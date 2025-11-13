@@ -24,6 +24,44 @@ The absorption spectrum is modeled as a sum of Gaussian peaks corresponding to d
 </div>
 
 
+### Mathematical formulation (Holstein–Spano aggregate)
+
+$$
+A(E)=A_0 \sum_{m=0}^{M}
+\left[
+e^{-S} \ \frac{S^{m}}{m!} \ \ 
+\left(1-\frac{W e^{-S}}{2E_p} \ G_m(S)\right)^{2}
+\ \ \frac{\exp\left(-\frac{(E-E_m)^2}{2\sigma^{2}}\right)}{\sigma}
+\right]
+$$
+
+with shared Gaussian width $\sigma$ and vibronic orders $m=0,\dots,M$ (here $M=4$). $A_0$ is a global amplitude (prefactor) capturing overall intensity. Peak centers are
+
+$$
+E_m = E_{00} + m \ E_p + \frac{1}{2} \ W \ S^{m}e^{-S},
+$$
+
+and the interference term
+
+$$
+G_m(S) = \sum_{\substack{n=0, \\\\ n\neq m}}^{N}\frac{S^{n}}{n! \ (n-m)}
+$$
+
+### Aggregate fraction from fitted decomposition
+
+Let $D(E)$ be the measured spectrum (experimental data) and $A_{\mathrm{fit}}(E)$ the fitted total. We define the aggregate area from fitted vibronic components $A_m(E)$ and the amorphous excess for $E>E_c$:
+
+$$
+A_{\mathrm{agg}}=\sum_{m=0}^{M}\int A_m(E) \ \mathrm{d}E,\qquad
+I_{\mathrm{amor}}=\int_{E>E_c} \max \left\\{0, D(E)-A_{\mathrm{fit}}(E) \right\\} \mathrm{d}E.
+$$
+
+With radiative-efficiency weights (relative extinction coefficients) $\eta_{\mathrm{agg}}$ and $\eta_{\mathrm{amor}}$,
+
+$$
+\phi_{\mathrm{agg}}=\frac{\eta_{\mathrm{agg}} \ A_{\mathrm{agg}}}{\eta_{\mathrm{agg}} \ A_{\mathrm{agg}}+\eta_{\mathrm{amor}} \ I_{\mathrm{amor}}}.
+$$
+
 ## Installation
 
 1. Clone the repository:
@@ -152,12 +190,14 @@ The fitted parameters provide insights into:
 If you use this tool in your research, please cite:
 
 ```
-@software{vibronic_fitting,
-  author = {Lukas Bongartz},
-  title = {Vibronic Fitting Tool},
-  year = {2023},
-  url = {https://github.com/lukasbongartz/vibronic-fitting-tool}
-}
+@article{bongartz2025electron,
+	author = {Bongartz, Lukas M. and LeCroy, Garrett and Quill, Tyler J and Siemons, Nicholas and Dijk, Gerwin and Marks, Adam and Cheng, Christina and Kleemann, Hans and Leo, Karl and Salleo, Alberto},
+	journal = {Communications Materials},
+	title = {Electron--ion coupling breaks energy symmetry in bistable organic electrochemical transistors},
+  volume = {6},
+  number = {1},
+  pages = {241},
+	year = {2025}}
 ```
 
 ## License
